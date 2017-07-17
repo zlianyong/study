@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>house_detail</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="css/house_detail.css"/>
+		<link rel="stylesheet" type="text/css" href="css/swiper-3.4.2.min.css"/>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		<div id="cont">	
+		<div class="nav">
+			<div class="header clearfix">
+				<div class="header-left">
+					<i class="left"></i>
+				</div>
+				<div class="header-con">
+					链家
+				</div>
+				<div class="header-right">
+					<i class="wode"></i>
+				</div>
+			</div>
+				<div class="swiper-container">
+				    <div class="swiper-wrapper">
+				        	<div class="swiper-slide" v-for="pho in photo"><img src="" v-bind:src="pho.image"></div>
+			
+			   		 </div>
+		   		 	<div class="swiper-pagination"></div>
+				</div>
+		</div>
+		<div class="main_title">
+			<h2>{{lists.title}}</h2>
+		</div>
+		<div class="data_detail">
+			<ul class="clearfix">
+				<li>
+					<p>售价</p>
+					<span>{{lists.house_sale}}</span>
+				</li>
+				<li>
+					<p>房型</p>
+					<span>{{lists.house_type}}</span>
+				</li>
+				<li>
+					<p>建筑面积</p>
+					<span>{{lists.house_measure}}</span>
+				</li>
+			</ul>
+		</div>	
+		<div class="house_description">
+			<ul class="house_description_ul clearfix">
+				<li class="house_description_li">
+					<i>单价:</i>
+					<span>{{lists.unit_price}}</span>
+				</li>
+				<li class="house_description_li">
+					<i>挂牌:</i>
+					<span>{{lists.listing}}</span>
+				</li>
+				<li class="house_description_li">
+					<i>朝向:</i>
+					<span>{{lists.direction}}</span>
+				</li>
+				<li class="house_description_li">
+					<i>楼层:</i>
+					<span>{{lists.floor_type}}</span>
+				</li>
+				<li class="house_description_li">
+					<i>楼型:</i>
+					<span>{{lists.floor}}</span>
+				</li>
+				<li class="house_description_li">
+					<i>电梯:</i>
+					<span>{{lists.elevator}}</span>
+				</li>
+				<li class="house_description_li">
+					<i>装修:</i>
+					<span>{{lists.renovation}}</span>
+				</li>
+				<li class="house_description_li">
+					<i>年代:</i>
+					<span>{{lists.years}}</span>
+				</li>
+				<li class="house_description_li">
+					<i>用途:</i>
+					<span>{{lists.purpose}}</span>
+				</li>
+				<li class="house_description_li">
+					<i>权属:</i>
+					<span>{{lists.ownership}}</span>
+				</li>
+			</ul>
+			<ul class="house_long_ul">
+				<li class="house_long_li">
+					<i>首付预算:</i>
+					<span>{{lists.budget}}</span>
+				</li>
+				<li class="house_long_li">
+					<i>小区:</i>
+					<span>{{lists.quarters}}</span>
+				</li>
+			</ul>
+		</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-3.2.0.min.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/function.js" ></script>
+		<script type="text/javascript" src="js/swiper-3.4.2.jquery.min.js" ></script>
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:"#cont",
+				data:{
+					city:[],
+					photo:{},
+					lists:[]
+				},
+				mounted:function(){
+			        this.getList();
+			  },
+				methods:{
+					getList:function() {
+						var house_id=getParam("id")
+					 	$.ajax({
+					 		type:"post",
+					 		url:"http://118.89.169.233/lianjia/index.php/home/house/detail",
+					 		dataType:"json",
+					 		data:{
+					 			id:house_id
+					 		},
+					 		success:function(res){
+					 			console.log(res)
+					 			this.lists=res.info
+					 			this.photo=res.info.images
+					 		}.bind(this)
+					 	});
+					}
+				},
+				updated:function(){
+					var mySwiper = new Swiper ('.swiper-container', {
+				    direction: 'horizontal',
+				    loop:false,
+					pagination: '.swiper-pagination',
+					paginationType : 'fraction',
+					autoplay : 2200,
+					autoplayDisableOnInteraction : false,
+			  })
+				}
+			});
+			
+			
+		</script>
+	</body>
+</html>

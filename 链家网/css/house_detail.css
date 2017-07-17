@@ -1,0 +1,149 @@
+body,html{
+				font-size: 62.5%;
+			}	
+			body,html,div,img,ul,li,a,span,h2,p,h3{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background: #f5f5f5;
+			}
+			.nav{
+				width:100%;
+				height: 23rem;
+			/*	background: url(img/bb64.jpg) no-repeat center;*/
+				/*background-size:cover ;*/
+				position: relative;
+			}
+			.clearfix::after{
+				content: "";
+				height: 0;
+				display: block;
+				clear: both;
+			}
+			.header{
+				
+				width: 96%;
+				padding: .5rem 2%rem;
+				height: 3.125rem;
+				line-height: 3.1rem;
+				position: absolute;
+				top: 0;
+				left: 2%;
+				z-index: 999;
+			}
+			.header-left{
+				width: 33%;
+				font-size: 1.4rem;
+				float: left;
+			}
+			.header-con{
+				width: 33%;
+				font-size: 1.9rem;
+				float: left;
+				text-align: center;
+				color: #FFFFFF;
+			}
+			.header-right{
+				width: 33%;
+				float: left;
+			}
+			.left{
+				display: inline-block;
+				width: 1.8rem;
+				height: 1.8rem;
+				background: url(../img/left.png) no-repeat;
+				background-size: 1.8rem;
+				position: relative;
+				top: .5rem;
+			}
+			.wode{
+				display: inline-block;
+				width: 1.6rem;
+				height: 1.6rem;
+				background: url(../img/wode.png) no-repeat;
+				background-size: 1.6rem;
+				position: relative;
+				top: .8rem;
+				float: right;
+			}
+			.main_title{
+				background: #FFFFFF;
+				padding: 1rem;
+				font-size: 1.6rem;
+				color: #666;
+			}
+			.data_detail{
+				background: #FFFFFF;
+				padding: 1.6rem 0;
+				border: .1rem solid #F5F5F5;
+			}
+			.data_detail ul li{
+				width: 33%;
+				float: left;
+				text-align: center;
+				list-style: none;
+			}
+			.data_detail ul li p{
+				font-size: 1.3rem;
+				color: #999;
+				padding: .5rem 0;
+			}
+			.data_detail ul li span{
+				font-size: 1.7rem;
+				color: red;
+				font-weight: bold;
+			}
+			.swiper-container{
+				width: 100%;
+				height: 100%;
+			}
+			.swiper-slide{
+				width: 100%;
+				height: 100%;
+			}
+			.swiper-pagination{
+				color: #fff;
+				font-size: 1.5;
+				text-align: right;
+			}
+			.house_description{
+				padding: 1rem;
+				background: #FFFFFF;
+			}
+			.house_description_li{
+				float: left;
+				width: 46%;
+				padding-left: 4%;
+				list-style: none;
+				
+				line-height: 3rem;
+				margin: .5rem 0;
+			}
+			.house_description_li i{
+				font-style: normal;
+				font-size: 1.6rem;
+				color: #999999;
+			}
+			.house_description_li span{
+				font-size: 1.4rem;
+				color: #333333;
+			}
+			.house_long_ul{
+				width: 100%;
+			}
+			.house_long_li{
+				list-style: none;
+				width: 95%;
+				padding: 1rem 0 1rem 5%;
+			}
+			.house_long_li i{
+				font-style: normal;
+				font-size: 1.6rem;
+				color: #999999;
+			}
+			.house_long_li span{
+				
+				font-size: 1.6rem;
+				color: #333;
+			}

@@ -1,0 +1,242 @@
+DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>rent_house</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="css/first.css"/>
+		<link rel="stylesheet" type="text/css" href="css/rent_house used_house.css"/>
+	</head>
+	<body id="back">
+		<div id="cont">
+		<div class="con">
+		<div class="header clearfix">
+			<div class="header-left">
+				<i class="left"></i>
+				<span class="addresses">
+				北京
+				</span>
+				<i class="mores"></i>
+			</div>
+			<div class="header-con">
+				链家租房
+			</div>
+			<div class="header-right">
+				<i class="wode"></i>
+			</div>
+		</div>
+		<div class="searchbox">
+			<input type="text" name="search" id="search" placeholder="输入信息查找房源"/>
+				<i class="sea"></i>
+		</div>
+		<div class="house-lists">
+			<div class="flexbox">
+				<ul class="clearfix">
+					<li>
+						<span class="address addres">
+							区域
+						</span>
+						<i class="more"></i>
+					</li>
+					<li>
+						<span class="address">
+							价格
+						</span>
+						<i class="more"></i>
+					</li>
+					<li>
+						<span class="address">
+							房型
+						</span>
+						<i class="more"></i>
+					</li>
+					<li>
+						<span class="address">
+							更多
+						</span>
+						<i class="more"></i>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="mod-cont">
+				
+			</div>
+		</div>
+		<div class="selection">
+				<div class="area clearfix">
+					<div class="area-left">
+						<p class="" v-for="(values,index) in area" v-on:click="getlist(values)">{{values.name}}</p>
+					</div>
+					<div class="area-right">
+						<ul class="right-lists">
+							<li v-for="(value,index) in list.child" v-on:click="getarea(value)" class="lists_li">{{value.name}}
+							</li>
+						</ul>
+					</div>
+					<div class="right_detail">
+						<ul class="detail_lists" v-if="seen">
+							<li v-for="(item,index) in areas.kid" class="detail_li">{{item.name}}</li>
+						</ul>
+					</div>
+				</div>
+				<div class="area hide">
+					<ul>
+						<li>1111</li>
+					</ul>
+				</div>
+				<div class="area hide">
+					<ul>
+						<li>1111</li>
+						
+					</ul>
+				</div>
+				<div class="area hide">
+					<ul>
+						<li>1111</li>
+					</ul>
+				</div>
+		</div>
+		
+		</div>
+			<div class="recommend reco">
+			<div class="reco-top">
+				<h2 style="font-size:1.8rem">推荐房源</h2>
+			</div>
+			<div class="recommend-cont">
+				<ul>
+					<li class="clearfix" v-for="(item,index) in house" v-on:click="jump(index)">
+						<div class="cont-left">
+							<img src="img/house.jpg" v-bind:src="item.img">
+						</div>
+						<div class="cont-right">
+							<p class="title">{{item.title}}</p>
+							<p class="size">{{item.content}}</p>
+							<p class="price"><em>{{item.price}}</em><span class="unit"> {{item.unit_price}}</span></p>
+							<p class="label"><a>满五年</a><a>随时看房</a><a>地铁</a></p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="select">
+			<ul>
+				<li v-for="value in city" class="select_li">{{value.name}}</li>
+			</ul>
+		</div>
+			
+		</div>
+		<script type="text/javascript" src="js/jquery-3.2.0.min.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/function.js" ></script>
+		<script type="text/javascript">
+			var u_id=localStorage.getItem("p2_user_id");
+			console.log(u_id);
+			var vm=new Vue({
+				el:"#cont",
+				data:{
+				city:[],
+					photo:{},
+					lists:[],
+				    area:{},
+					seen:false,
+					index:"",
+					conindex:"",
+					list:[],
+					areas:[],
+				},
+				mounted:function(){
+			        this.getList();
+			   },	
+				methods:{
+					getList:function(index) {
+						var icon_id=getParam("id");
+						var area_id=getParam("pid")
+					 	$.ajax({
+					 		type:"post",
+					 		url:"http://118.89.169.233/lianjia/index.php/home/condition/sec_rent",
+					 		dataType:"json",
+					 		data:{
+					 			user_id:u_id,
+					 			icon_id:icon_id,
+					 			area_id:area_id
+					 		},
+					 		success:function(res){
+					 			console.log(res)
+					 			this.city=res.city;
+					 			this.area=res.area;
+					 			this.house=res.houses
+					 			this.lists=res.area[0].child
+					 			console.log(this.lists)
+					 		}.bind(this)
+					 	});
+					},
+					jump:function(index){
+						var house_id=this.house[index].id;
+						location.href="house_detail.html?id="+house_id+""
+					},
+					getlist:function(values){
+						this.list=values
+						console.log(this.list)
+						this.seen=false
+					},
+					getarea:function(value){
+						this.seen=true
+						this.areas=value;
+						console.log(this.areas)
+					},
+				},
+				updated:function(){
+					$(".flexbox ul li").click(function(){
+						$(".selection").slideDown(300)
+						$(this).children(".more").addClass("changeimg");		
+						$(this).siblings().children(".more").removeClass("changeimg");
+						var dex=$(this).index();
+						$(".area").eq(dex).removeClass("hide").siblings().addClass("hide");
+					});
+					
+				
+					 $(".flexbox").on("click",".changeimg",function(){
+					 	$(".selection").slideUp(300);
+						$(this).removeClass("changeimg");				
+					})
+				
+					
+					
+					$(".area-left p").click(function(){
+						$(this).addClass("white").siblings().removeClass("white");
+						var index=$(this).index();
+						$(".right-lists").eq(index).removeClass("hide").siblings().addClass("hide");
+					});
+					
+					 $(".area-right").on("click",".lists_li",function(){
+						$(this).addClass("white").siblings().removeClass("white");
+						var index=$(this).index();
+						$(".right-detail").eq(index).removeClass("hide").siblings().addClass("hide");
+					});
+					
+					$(".mores").click(function(){
+						$(".select").slideDown(300)
+					})
+					$(".select ul li").click(function(){
+						var a=$(this).text();
+						$(".addresses").html(a);
+						$(".select").slideUp(200)
+					})
+						
+					 $(".right_detail").on("click",".detail_li",function(){
+						var b=$(this).text();
+						$(".addres").html(b);
+//						$(".selection").slideUp(300);
+					})
+					
+				},
+			});
+			
+		
+		
+		
+			
+		</script>
+	</body>
+</html>

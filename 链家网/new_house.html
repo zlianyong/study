@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>new_house</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="css/first.css"/>
+		<style type="text/css">
+			body,html{
+				font-size: 62.5%;
+			}	
+			body,html,div,img,ul,li,a,span,h2,p{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background: #f5f5f5;
+			}
+			.clearfix::after{
+				content: "";
+				height: 0;
+				display: block;
+				clear: both;
+			}
+			.header{
+				padding: .5rem 1rem;
+				height: 3.125rem;
+				background: #FFFFFF;
+				line-height: 3.1rem;
+			}
+			.header-left{
+				width: 33%;
+				font-size: 1.4rem;
+				float: left;
+			}
+			.header-con{
+				width: 33%;
+				font-size: 1.9rem;
+				float: left;
+				text-align: center;
+			}
+			.header-right{
+				width: 33%;
+				float: left;
+			}
+			.left{
+				display: inline-block;
+				width: 1.8rem;
+				height: 1.8rem;
+				background: url(img/left.png) no-repeat;
+				background-size: 1.8rem;
+				position: relative;
+				top: .5rem;
+			}
+			.more{
+				display: inline-block;
+				width: 1.4rem;
+				height: 1.4rem;
+				background: url(img/bottom.png) no-repeat;
+				background-size: 1.4rem;
+				position: relative;
+				top: .3rem;
+			}
+			.mores{
+				display: inline-block;
+				width: 1.4rem;
+				height: 1.4rem;
+				background: url(img/bottom.png) no-repeat;
+				background-size: 1.4rem;
+				position: relative;
+				top: .3rem;
+			}
+			.changeimg{
+				display: inline-block;
+				background: url(img/shang.png) no-repeat;
+				width: 1.4rem;
+				height: 1.4rem;
+				background-size: 1.4rem;
+			}
+			.wode{
+				display: inline-block;
+				width: 1.6rem;
+				height: 1.6rem;
+				background: url(img/wode.png) no-repeat;
+				background-size: 1.6rem;
+				position: relative;
+				top: .8rem;
+				float: right;
+			}
+			.address{
+				margin-left: 1rem;
+				line-height: 3.1rem;
+			}
+			.addresses{
+				margin-left: 1rem;
+				line-height: 3.1rem;
+			}
+			.searchbox{
+				width: 100%;
+				height: 15rem;
+				position: relative;
+				background: url(img/phpGP.jpg) no-repeat;
+				background-size: 100%;
+			}
+			#search{
+				width: 80%;
+				height: 3rem;
+				display: block;
+				padding-left: 10%;
+				font-size: 1.6rem;
+				line-height: 3rem;
+				color: #333;
+				border: .1rem solid #999;
+				border-radius: .8rem;
+				outline: none;
+				background: #FFFFFF;
+				position: absolute;
+				top: 70%;
+				left: 4%;
+			}
+			.sea{
+				display: inline-block;
+				width: 1.8rem;
+				height: 1.8rem;
+				background: url(img/search.png) no-repeat center;
+				background-size: 1.8rem;
+				position: absolute;
+				left: 6%;
+				top: 11.3rem;
+			}
+			.select{
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: 998;
+				background: #FFFFFF;
+				display: none;
+			}
+			.select ul li{
+				padding: 1rem 1.5rem;
+				font-size: 1.7rem;
+				border-top:.1rem solid #DCDCDC ;
+				text-align: center;
+			}
+			.adver_img{
+				width: 100%;
+				height: 10rem;
+			}
+		</style>
+	</head>
+	<body id="back">
+		<div id="cont">
+		<div class="con">
+		<div class="header clearfix">
+			<div class="header-left">
+				<i class="left"></i>
+				<span class="addresses">
+				北京
+				</span>
+				<i class="mores"></i>
+			</div>
+			<div class="header-con">
+				链家新房
+			</div>
+			<div class="header-right">
+				<i class="wode"></i>
+			</div>
+		</div>
+		<div class="searchbox">
+			<input type="text" name="search" id="search" placeholder="输入信息查找房源"/>
+				<i class="sea"></i>
+		</div>
+		<div class="house-lists">
+			<div class="flexbox">
+				<ul class="clearfix">
+					<li>
+						<span class="address">
+							区域
+						</span>
+						<i class="more"></i>
+					</li>
+					<li>
+						<span class="address">
+							价格
+						</span>
+						<i class="more"></i>
+					</li>
+					<li>
+						<span class="address">
+							房型
+						</span>
+						<i class="more"></i>
+					</li>
+					<li>
+						<span class="address">
+							更多
+						</span>
+						<i class="more"></i>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="mod-cont">
+				
+			</div>
+		</div>
+		<div class="selection selectiones">
+				<div class="area clearfix">
+					<div class="area-left">
+						<p class="white">区域</p>
+						<p>地铁</p>
+					</div>
+					<div class="area-right">
+						<ul class="right-lists">
+							<li>东城区</li>
+							<li>西城区</li>
+							<li>海淀区</li>
+							<li>朝阳区</li>
+							<li>丰台区</li>
+							<li>大兴区</li>
+							<li>房山区</li>
+							<li>崇文区</li>
+						</ul>
+						<ul class="right-lists hide">
+							<li>1号线</li>
+							<li>2号线</li>
+							<li>3号线</li>
+							<li>4号线</li>
+							<li>5号线</li>
+							<li>6号线</li>
+							<li>8号线</li>
+							<li>10号线</li>
+						</ul>
+					</div>
+				</div>
+				<div class="area hide">
+					<ul>
+						<li>1111</li>
+						<li>1111</li>
+						
+					</ul>
+				</div>
+				<div class="area hide">
+					<ul>
+						<li>1111</li>
+						
+					</ul>
+				</div>
+				<div class="area hide">
+					<ul>
+						<li>1111</li>
+						
+					</ul>
+				</div>
+			</div>
+				
+		</div>
+			<div class="recommend recos">
+			<div class="adver_img">
+				<img src=""  v-bind:src="ad.address"/>
+			</div>
+			<div class="reco-top">
+				<h2 style="font-size:1.8rem">推荐房源</h2>
+			</div>
+			<div class="recommend-cont">
+				<ul>
+					<li class="clearfix" v-for="(item,index) in house" v-on:click="jump(index)">
+						<div class="cont-left">
+							<img src="img/house.jpg" v-bind:src="item.img">
+						</div>
+						<div class="cont-right">
+							<p class="title">{{item.title}}</p>
+							<p class="size">{{item.content}}</p>
+							<p class="price"><em>{{item.price}}</em><span class="unit"> {{item.unit_price}}</span></p>
+							<p class="label"><a>满五年</a><a>随时看房</a><a>地铁</a></p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="select">
+			<ul>
+				<li>上海</li>
+				<li>吉林</li>
+				<li>深圳</li>
+				<li>上海</li>
+				<li>吉林</li>
+				<li>深圳</li>
+			</ul>
+		</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-3.2.0.min.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/function.js" ></script>
+		<script type="text/javascript">
+			var u_id=localStorage.getItem("p2_user_id");
+			console.log(u_id);
+			var vm=new Vue({
+				el:"#cont",
+				data:{
+					city:[],
+					ad:[],
+					house:[]
+				},
+				mounted:function(){
+			        this.getList();
+			   },	
+				methods:{
+					getList:function(index) {
+						var area_id=getParam("pid")
+					 	$.ajax({
+					 		type:"post",
+					 		url:"http://118.89.169.233/lianjia/index.php/home/condition/new_house",
+					 		dataType:"json",
+					 		data:{
+					 				
+					 			area_id:area_id
+					 		},
+					 		success:function(res){
+					 			console.log(res)	
+					 			this.house=res.house
+					 			this.ad=res.ad
+					 		}.bind(this)
+					 	});
+					},
+					jump:function(index){
+						var house_id=this.house[index].id;
+						location.href="house_detail.html?id="+house_id+""
+					},
+					
+				},
+				updated:function(){
+					$(".flexbox ul li").click(function(){
+						$(".selection").slideDown(300)
+						$(this).children(".more").addClass("changeimg");		
+						$(this).siblings().children(".more").removeClass("changeimg");
+						var dex=$(this).index();
+						$(".area").eq(dex).removeClass("hide").siblings().addClass("hide");
+					});
+					
+				
+					 $(".flexbox").on("click",".changeimg",function(){
+					 	$(".selection").slideUp(300);
+						$(this).removeClass("changeimg");				
+					})
+				
+					
+					
+					$(".area-left p").click(function(){
+						$(this).addClass("white").siblings().removeClass("white");
+						var index=$(this).index();
+						$(".right-lists").eq(index).removeClass("hide").siblings().addClass("hide");
+					});
+					
+					 $(".area-right").on("click",".lists_li",function(){
+						$(this).addClass("white").siblings().removeClass("white");
+						var index=$(this).index();
+						$(".right-detail").eq(index).removeClass("hide").siblings().addClass("hide");
+					});
+					
+					$(".mores").click(function(){
+						$(".select").slideDown(300)
+					})
+					$(".select ul li").click(function(){
+						var a=$(this).text();
+						$(".addresses").html(a);
+						$(".select").slideUp(200)
+					})
+						
+					 $(".right_detail").on("click",".detail_li",function(){
+						var b=$(this).text();
+						$(".addres").html(b);
+//						$(".selection").slideUp(300);
+					})
+					
+				},
+			});
+			
+		</script>	
+	</body>
+</html>

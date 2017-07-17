@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>sale_house</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<style type="text/css">
+			body,html{
+				font-size: 62.5%;
+			}	
+			body,html,div,img,ul,li,a,span,h2,p{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background: #f5f5f5;
+			}
+			.clearfix::after{
+				content: "";
+				height: 0;
+				display: block;
+				clear: both;
+			}
+			.header{
+				padding: .5rem 1rem;
+				height: 3.125rem;
+				background: #FFFFFF;
+				line-height: 3.1rem;
+			}
+			.header-left{
+				width: 33%;
+				font-size: 1.4rem;
+				float: left;
+			}
+			.header-con{
+				width: 33%;
+				font-size: 1.9rem;
+				float: left;
+				text-align: center;
+				font-weight: bold;
+				color: #333;
+			}
+			.left{
+				display: inline-block;
+				width: 1.4rem;
+				height: 1.4rem;
+				background: url(img/left.png) no-repeat;
+				background-size: 1.4rem;
+				position: relative;
+				top: .3rem;
+			}
+			.stepchange{
+				margin-top: 1.5rem;
+				padding: 0 1rem;
+				background: #FFFFFF;
+			}
+			input{
+				width: 98%;
+				padding-left:2% ;
+				height: 3.5rem;
+				font-size:1.5rem;
+				color: #444;
+				line-height: 3.5rem;
+				outline: none;
+				border: none;
+				border-bottom: .1rem solid #DCDCDC;
+			}
+			.stepnext{
+				width: 90%;
+				height: 3.5rem;
+				line-height: 3.5rem;
+				text-align: center;
+				font-size: 1.6rem;
+				background: #39ac6a;
+				color: #FFFFFF;
+				margin: auto;
+				margin-top: 1rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="con">
+	
+		<div class="header clearfix">
+			<div class="header-left">
+				<i class="left"></i>
+				<span class="addresses">
+				返回
+				</span>
+			</div>
+			<div class="header-con">
+				免费发布房源
+			</div>
+		</div>
+		<div class="stepchange">
+			<input type="text" name="xiaoquname" id="xiaoquname" placeholder="小区名字"/>
+			<input type="text" name="loudonghao" id="loudonghao"  placeholder="楼栋号"/>
+			<input type="text" name="danyuanhao" id="danyuanhao"  placeholder="单元号"/>
+			<input type="text" name="menpaihao" id="menpaihao" placeholder="门牌号" />
+		</div>
+		<div class="stepnext">
+			下一步
+		</div>
+		<div class="pic">
+			
+		</div>
+				
+		</div>
+		<script type="text/javascript" src="js/jquery-3.2.0.min.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/function.js" ></script>
+		<script type="text/javascript">
+			$(".stepnext").click(function(){
+				var name = $("input[name='xiaoquname']").val();
+				var loudonghao = $("input[name='loudonghao']").val();
+				var danyuanhao = $("input[name='danyuanhao']").val();
+				var menpaihao = $("input[name='menpaihao']").val();
+				
+				$.ajax({
+				url:"http://118.89.169.233/lianjia/index.php/home/condition/sale",
+				type:"post",
+				dataType:"json",
+				data: {
+					
+				},
+				success:function(res){
+						console.log(res)
+					if(res.status=="ok"){
+						
+					}
+				},
+				error:function(){
+					alert("网络错误");
+				}
+			})
+			
+			})
+		</script>
+	</body>
+</html>

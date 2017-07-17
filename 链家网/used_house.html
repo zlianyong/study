@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>used_house</title>
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="css/first.css"/>
+		<link rel="stylesheet" type="text/css" href="css/rent_house used_house.css"/>
+	</head>
+	<body id="back">
+		<div id="cont">
+		<div class="con">
+		<div class="header clearfix">
+			<div class="header-left">
+				<i class="left"></i>
+				<span class="addresses">
+				北京
+				</span>
+				<i class="mores"></i>
+			</div>
+			<div class="header-con">
+				链家二手房
+			</div>
+			<div class="header-right">
+				<i class="wode"></i>
+			</div>
+		</div>
+		<div class="searchbox">
+			<input type="text" name="search" id="search" placeholder="输入信息查找房源"/>
+				<i class="sea"></i>
+		</div>
+		<div class="house-lists">
+			<div class="flexbox">
+				<ul class="clearfix">
+					<li>
+						<span class="address addres">
+							区域
+						</span>
+						<i class="more"></i>
+					</li>
+					<li>
+						<span class="address">
+							价格
+						</span>
+						<i class="more"></i>
+					</li>
+					<li>
+						<span class="address">
+							房型
+						</span>
+						<i class="more"></i>
+					</li>
+					<li>
+						<span class="address">
+							更多
+						</span>
+						<i class="more"></i>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="mod-cont">
+				
+			</div>
+		</div>
+		<div class="selection">
+				<div class="area clearfix">
+					<div class="area-left">
+						<p class="" v-for="(values,index) in area" v-on:click="getlist(values)">{{values.name}}</p>
+					</div>
+					<div class="area-right">
+						<ul class="right-lists">
+							<li v-for="(value,index) in list.child" v-on:click="getarea(value)" class="lists_li">{{value.name}}
+							</li>
+						</ul>
+					</div>
+					<div class="right_detail">
+						<ul class="detail_lists" v-if="seen">
+							<li v-for="(item,index) in areas.kid" class="detail_li">{{item.name}}</li>
+						</ul>
+					</div>
+				</div>
+				<div class="area hide">
+					<ul>
+						<li>1111</li>
+					</ul>
+				</div>
+				<div class="area hide">
+					<ul>
+						<li>1111</li>
+						
+					</ul>
+				</div>
+				<div class="area hide">
+					<ul>
+						<li>1111</li>
+					</ul>
+				</div>
+		</div>
+		
+		</div>
+			<div class="recommend reco">
+			<div class="reco-top">
+				<h2 style="font-size:1.8rem">推荐房源</h2>
+			</div>
+			<div class="recommend-cont">
+				<ul>
+					<li class="clearfix">
+						<div class="cont-left">
+							<img src="img/house.jpg"/>
+						</div>
+						<div class="cont-right">
+							<p class="title">天慧园 南北通透2居室 格局方正 诚心出售</p>
+							<p class="size">2室1厅/82.94m²/南 北/回龙观</p>
+							<p class="price"><em>420万 </em><span class="unit"> 50640元/平</span></p>
+							<p class="label"><a>满五年</a><a>随时看房</a><a>地铁</a></p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="select">
+			<ul>
+				<li v-for="value in city" class="select_li">{{value.name}}</li>
+			</ul>
+		</div>
+			
+		</div>
+		<script type="text/javascript" src="js/jquery-3.2.0.min.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/function.js" ></script>
+		<script type="text/javascript" src="js/used_house.js" ></script>
+	</body>
+</html>
